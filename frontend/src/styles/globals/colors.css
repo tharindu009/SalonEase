@@ -1,0 +1,38 @@
+:root {
+    /* TEXT */
+    --clr-text-light: hsl(20, 50%, 98%);
+    --clr-text-dark: hsl(14, 65%, 9%);
+    --clr-text-accent: hsl(14, 86%, 42%);
+    --clr-text-label: hsl(12, 20%, 44%);
+  
+    /* BUTTON */
+    --clr-btn-bg-primary: hsl(20, 50%, 98%);
+    --clr-btn-border: #e5dad9;
+    --clr-btn-hover-bg: hsl(14, 86%, 42%);
+    --clr-btn-hover-border: transparent;
+  
+    /* BACKGROUND */
+    --clr-cart: hsl(20, 50%, 98%);
+  }
+  
+  .navbar {
+    --bs-navbar-brand-color: var(--clr-text-dark);
+    --bs-navbar-active-color: var(--clr-text-accent);
+  }
+  
+  .nav-link {
+    --bs-nav-link-color: var(--clr-text-dark);
+  }
+  
+  .text-primary {
+    color: var(--clr-text-dark) !important;
+  }
+  
+  .text-label {
+    color: var(--clr-text-label);
+  }
+  
+  .text-accent {
+    color: var(--clr-text-accent);
+  }
+  

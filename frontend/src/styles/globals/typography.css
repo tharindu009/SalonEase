@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+body {
+    --ff: "Poppins", serif;
+    font-family: var(--ff);
+  }
+  
+  .fs-7 {
+    font-size: 0.875rem;
+  }
+  
