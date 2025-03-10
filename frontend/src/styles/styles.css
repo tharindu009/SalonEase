@@ -108,3 +108,10 @@
 .pointer {
     cursor: pointer;
 }
+
+
+/*------Header--------*/
+
+.header-image-left{
+    padding-top: 10vw;
+}
