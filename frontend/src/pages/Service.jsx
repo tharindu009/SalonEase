@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { Component } from 'react'
 import hair_service from '../assets/images/hair_service.png'
 import hair_color from '../assets/images/hair_color.png'
 import hair_text from '../assets/images/hair_texturing.png'
 import nail_service from '../assets/images/nail_service.png'
+import BestPricing from '../components/BestPricing'
 
 const Service = () => {
     return (
+        <div>
         <div className="service">
         <div className="container">
             <div className="section-header text-center">
@@ -59,6 +61,8 @@ const Service = () => {
                 </div>
             </div>
         </div>
+    </div>
+    <BestPricing/>
     </div>
     )
 }
