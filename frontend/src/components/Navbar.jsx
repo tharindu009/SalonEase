@@ -20,7 +20,7 @@ const Navbar = () => {
     return (
 
         <div className="d-flex justify-content-between align-items-center text-sm py-2 mb-5 border-bottom border-secondary">
-            <img className='img-fluid w-44 cursor-pointer' src={logo} alt="Logo" />
+            <img onClick={()=>navigate('/')} className='img-fluid w-44 pointer' src={logo} alt="Logo" />
             <nav className="navbar navbar-expand-lg">
                 <button className="navbar-toggler d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="toggler-icon top-bar"></span>

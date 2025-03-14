@@ -11,7 +11,21 @@ import price10 from './prices/price-10.jpg'
 import price11 from './prices/price-11.jpg'
 import price12 from './prices/price-12.jpg'
 
+import hair_service from './images/hair_service.png'
+import hair_color from './images/hair_service.png'
+import hair_texturing from './images/hair_service.png'
+import nail_service from './images/hair_service.png'
 
+import logo from './images/logo.png'
+
+
+export const assets = {
+    hair_service,
+    nail_service,
+    hair_texturing,
+    hair_color,
+    logo
+}
 
 export const prices = [
     {
