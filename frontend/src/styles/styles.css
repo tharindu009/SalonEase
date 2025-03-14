@@ -150,3 +150,12 @@
 .spacing{
     margin: 1rem;
 }
+
+.banner{
+    width: 370px; 
+    position: relative;
+}
+
+.banner-img{
+    max-width: 28rem;
+}
