@@ -16,6 +16,7 @@ import Contact from "./pages/Contact";
 import Profile from "./pages/Profile";
 import Appointments from "./pages/Appointments";
 import MyAppointment from "./pages/MyAppointment";
+import Footer from "./components/Footer";
 
 
  const App = () => {
@@ -33,6 +34,7 @@ import MyAppointment from "./pages/MyAppointment";
         <Route path='/my-appointment' element={<MyAppointment />}/>
         <Route path='/appointments/:service' element={<Appointments />}/>
       </Routes>
+      <Footer/>
     </div>
   )
  }

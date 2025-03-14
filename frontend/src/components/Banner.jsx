@@ -18,7 +18,7 @@ const Banner = () => {
             </div>
             {/*------- Right Side --------- */}
             <div className='d-none d-md-block col-md-6 banner'>
-            <img className='w-100 position-absolute bottom-1 end-0 banner-img' src={bannerImg} alt="" />
+            <img className='w-100 position-absolute bottom-0 end-0 banner-img' src={bannerImg} alt="" />
             </div>
         </div>
     )
