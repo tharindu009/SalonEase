@@ -2,11 +2,11 @@
 
 ## Table of Contents
 
-- [General Info](#general-information)
-- [Technologies Used](#technologies-used)
-- [Features](#features)
-- [Screenshots](#screenshots)
-- [Setup](#setup)
+- [General Info](##general-information)
+- [Technologies Used](##technologies-used)
+- [Features](##features)
+- [Prerequisites](##prerequisites)
+- [Running the project](##setup)
 - [Usage](#usage)
 - [Project Status](#project-status)
 - [Room for Improvement](#room-for-improvement)
@@ -35,22 +35,24 @@ SalonEase is a salon appointment booking app that makes scheduling effortless fo
 
 ## Prerequisites
 
- npm
+ - npm
   ```
   npm install npm@latest -g
   ```
- Node.js (v18+) 
- MongoDB 
+  -Node.js (v18+) 
+  -MongoDB 
 
-## Setup
+## Running the project
 
-1️⃣ Clone the repository
-
-2️⃣ Install dependencies
+### Clone the repository
+```
+https://github.com/tharindu009/SalonEase.git
+```
+### Install dependencies
 ```
 npm install
 ```
-3️⃣ Run the development server
+### Run the development server
 ```
 npm run dev
 ```
