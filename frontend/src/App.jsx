@@ -32,7 +32,7 @@ import Footer from "./components/Footer";
         <Route path='/profile' element={<Profile />}/>
         <Route path='/appointments' element={<Appointments />}/>
         <Route path='/my-appointment' element={<MyAppointment />}/>
-        <Route path='/appointments/:service' element={<Appointments />}/>
+        <Route path='/appointments/:serviceId' element={<Appointments />}/>
       </Routes>
       <Footer/>
     </div>

@@ -1,12 +1,12 @@
 import React from 'react'
-import hairservice from "../assets/images/hair_service.png"
-import haircolor from "../assets/images/hair_color.png"
-import texturing from "../assets/images/hair_texturing.png"
-import nailservice from "../assets/images/nail_service.png"
+import hairservice from "../assets/images/hair_cut.png"
+import haircolor from "../assets/images/hair_coloring.png"
+import texturing from "../assets/images/hair_texture.png"
+import nailservice from "../assets/images/beard_style.png"
 
 const ServiceMenu = () => {
     return (
-        <div id='services' className='d-flex flex-column align-items-center py-4 text-dark'>
+        <div id='services' className='d-flex flex-column align-items-center py-5 text-dark'>
             <h1 className='font-weight-medium'>Our Services</h1>
             <p>Simply browse through our extensive list of services, schedule your appointment hassle-free.</p>
             <div className='spacing'></div>
@@ -17,7 +17,7 @@ const ServiceMenu = () => {
                             <div className="signle-icon">
                                 <img className='service-pics rounded-circle' src={hairservice} alt="" />
                             </div>
-                            <h4>Hair Service</h4>
+                            <h4>Hair Style</h4>
                         </div>
 
                     </div>
@@ -44,7 +44,7 @@ const ServiceMenu = () => {
                             <div className="signle-icon">
                                 <img className='service-pics rounded-circle' src={nailservice} alt="" />
                             </div>
-                            <h4>Nail Service</h4>
+                            <h4>Beard Style</h4>
                         </div>
 
                     </div>

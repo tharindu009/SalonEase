@@ -292,3 +292,14 @@
     background: none;
     transition: .3s;
 }
+
+.app-desc{
+    font-size: 0.875rem; 
+    font-weight: 500; 
+    color: #262626;
+}
+
+.appointment-date{
+    min-width: 4rem; 
+    border-radius: 10px;
+}

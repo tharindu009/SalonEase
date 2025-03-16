@@ -13,12 +13,12 @@ const Banner = () => {
             <h1 className='display-6 text-info font-weight-semibold'>
                     Book Appointment <br/> with ease
                 </h1>
-                <button onClick={() => { navigate('/login'); scrollTo(0, 0) }} className="btn btn-primary text-white px-4 py-2 rounded-pill font-weight-light pointer" href="#services">Book Appointment</button>
+                <button onClick={() => { navigate('/login'); scrollTo(0, 0) }} className="btn btn-primary text-white px-4 py-2 rounded-pill font-weight-light pointer" href="#services">Create Account</button>
 
             </div>
             {/*------- Right Side --------- */}
             <div className='d-none d-md-block col-md-6 banner'>
-            <img className='w-100 position-absolute bottom-0 end-0 banner-img' src={bannerImg} alt="" />
+            <img className='w-100 position-absolute bottom-0 banner-img' src={bannerImg} alt="" />
             </div>
         </div>
     )

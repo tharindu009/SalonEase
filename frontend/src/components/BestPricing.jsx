@@ -1,12 +1,13 @@
-import React from 'react'
-import { prices } from '../assets/assets'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AppContext } from '../context/AppContext';
 
 
 
 const BestPricing = () => {
 
-const navigate = useNavigate();
+const navigate = useNavigate()
+const {prices} = useContext(AppContext)
 
     return (
         <div className='d-flex flex-column align-items-center my-4 text-dark mx-md-5'>
@@ -16,7 +17,7 @@ const navigate = useNavigate();
                 <div className='row'>
 
                     {prices.slice(0, 12).map((item, index) => (
-                        <div onClick={() => { navigate(`/appointment/${item._id}`); scrollTo(0, 0) }} key={index} className="col-lg-3 col-md-4 col-sm-6 pointer">
+                        <div onClick={() => { navigate(`/appointments/${item._id}`); scrollTo(0, 0) }} key={index} className="col-lg-3 col-md-4 col-sm-6 pointer">
                             <div className="price-item">
                                 <div className="price-img">
                                     <img src={item.image} alt="Image" />

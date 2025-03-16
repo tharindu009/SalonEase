@@ -8,8 +8,8 @@ const Footer = () => {
             <div className='d-flex flex-column my-5 mt-5'>
                 <div className='row g-4'>
                 {/*------ Left Section --------*/}
-                <div className='col-6'>
-                    <img className='mb-5' src={logo} alt='logo'></img>
+                <div className='col-md-6 col-sm-12'>
+                    <img className='mb-2' src={logo} alt='logo'></img>
                     <p className='w-80 w-md-66 text-secondary'>
                         Lorem ipsum dolor sit amet elit. Quisque eu lectus a leo dictum nec non quam. Tortor eu placerat rhoncus, lorem quam iaculis felis, sed lacus neque id eros.
                     </p>
@@ -17,7 +17,7 @@ const Footer = () => {
                 </div>
 
                 {/*-------- Center Section ---------*/}
-                <div className='col-3'>
+                <div className='col-md-3 col-sm-12'>
                     <p className='fs-5'>
                         COMPANY
                     </p>
@@ -30,7 +30,7 @@ const Footer = () => {
                 </div>
 
                 {/*-------- Right Section ---------*/}
-                <div className='col-3'>
+                <div className='col-md-3 col-sm-12'>
                     <p className='fs-5'>
                         GET IN TOUCH
                     </p>

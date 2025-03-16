@@ -3,8 +3,8 @@ import header_image from '../assets/images/header_image.png'
 
 const Header = () => {
     return (
-        <div className='d-flex flex-column flex-md-row flex-wrap bg-light rounded px-3 px-md-4 px-lg-5'>
-            <div className='col-md-6 d-flex flex-column align-items-start justify-content-center gap-4 py-10 mx-auto mb-[-30px] header-image-left'>
+        <div className='d-flex flex-column flex-md-row flex-wrap bg-light rounded p-3 p-md-4 p-lg-5'>
+            <div className='col-md-6 d-flex flex-column align-items-start justify-content-center gap-4 py-6 mx-auto'>
                 <h1 className='display-6 text-info font-weight-semibold'>
                     Book Appointment <br/> with ease
                 </h1>
@@ -17,7 +17,7 @@ const Header = () => {
             </div>
             {/*--------------*/}
             <div className='d-flex flex-column justify-content-center col-md-6 position-relative'>
-                <img className='position-absolute bottom-2 h-auto rounded d-none d-md-block' src={header_image} alt="" />
+                <img className='w-100 position-absolute h-auto rounded d-none d-md-block' src={header_image} alt="" />
             </div>
 
         </div>
