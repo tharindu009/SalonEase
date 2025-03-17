@@ -5,6 +5,7 @@ import logo from '../assets/images/logo.svg'
 const Footer = () => {
     return (
         <div className='mx-5 mx-md-3'>
+            <hr />
             <div className='d-flex flex-column my-5 mt-5'>
                 <div className='row g-4'>
                 {/*------ Left Section --------*/}
@@ -45,6 +46,7 @@ const Footer = () => {
                 <hr />
                 <p className='py-5 text-sm text-center'>Copyright 2025 @ salonease - All Right Reserved.</p>
             </div>
+            
         </div>
     )
 }

@@ -9,7 +9,7 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     const [showMenu, setShowMenu] = useState(false)
-    const [token, setToken] = useState(false)
+    const [token, setToken] = useState(true)
 
     const logout = () => {
         localStorage.removeItem('token')
@@ -77,7 +77,7 @@ const Navbar = () => {
                                 </ul>
                             
                         </div>
-                        : <button className="btn btn-primary text-white px-4 py-2 rounded-pill font-weight-light d-none d-md-block" >Create Account</button>
+                        : <button onClick={() => { navigate('/login'); scrollTo(0, 0) }} className="btn btn-primary text-white px-4 py-2 rounded-pill font-weight-light d-none d-md-block" >Create Account</button>
                 }
             </div>
         </div >
