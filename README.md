@@ -29,9 +29,18 @@ SalonEase is a salon appointment booking app that makes scheduling effortless fo
 
 
 ## Features
+### Phase 1
  - Online Appointment Scheduling – Allow clients to book, reschedule, or cancel appointments
- - Service & Stylist Selection – Enable users to choose specific services and view pricing details.
+ - Service & Stylist Selection – Enable users to choose specific services and view pricing details. (Complete)
  - Manage Appointments - Salon owner can manage appointments (Cancel, Reschedule)
+ 
+ ### Phase 2 (Wishlist)
+ - Automated Appointment Reminders – Reduce no-shows with SMS, email, or push notification reminders.
+ - Custom Promotions & Discounts – Create special offers, loyalty rewards, and discount codes to boost bookings.
+ - Payment & Revenue Tracking – Manage online and offline payments, generate invoices, and track earnings.
+ - Multi-Branch Management – If the salon has multiple locations, manage appointments, staff, and inventory across branches.
+ - Inventory Management – Track salon product stock levels, receive low-stock alerts, and manage supplier orders.
+ - In-App Chat & Customer Support – Communicate with clients and handle special requests or inquiries.
 
 ## Prerequisites
 
