@@ -111,6 +111,12 @@
 
 
 /*------Header--------*/
+.header-section {
+    background-color: #5271FF; /* Purple background color */
+    /* padding: 80px 0; */
+    color: white;
+  }
+  
 
 .header-image-left{
     padding-top: 10vw;

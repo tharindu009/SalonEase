@@ -15,7 +15,6 @@ const {prices} = useContext(AppContext)
             <h3 className='font-weight-medium'>We Provide Best Price in the City</h3>
             <div className="container price">
                 <div className='row'>
-
                     {prices.slice(0, 12).map((item, index) => (
                         <div onClick={() => { navigate(`/appointments/${item._id}`); scrollTo(0, 0) }} key={index} className="col-lg-3 col-md-4 col-sm-6 pointer">
                             <div className="price-item">
@@ -29,11 +28,7 @@ const {prices} = useContext(AppContext)
                             </div>
                         </div>
                     ))}
-
                 </div>
-
-
-
             </div>
         </div>
     )

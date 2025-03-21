@@ -13,12 +13,12 @@ const Contact = () => {
                         <img src={contactus} alt="" />
                     </div>
                     <div className='col-md-8 col-sm-12 row g-3 d-flex justify-content-center'>
-                        <p class="font-weight-semibold h5 text-muted">OUR OFFICE</p>
-                        <p class="text-muted">54709 Main Street <br /> Suite 350, Saskatoon, SK</p>
-                        <p class="text-muted">Tel: (123) 456-7890 <br /> Email: info@salonease.com</p>
+                        <p className="font-weight-semibold h5 text-muted">OUR OFFICE</p>
+                        <p className="text-muted">54709 Main Street <br /> Suite 350, Saskatoon, SK</p>
+                        <p className="text-muted">Tel: (123) 456-7890 <br /> Email: info@salonease.com</p>
 
-                        <p class="text-muted">Learn more about our team and job openings.</p>
-                        <button class="btn btn-outline-dark px-4 py-2">Contat Us</button>
+                        <p className="text-muted">Learn more about our team and job openings.</p>
+                        <button className="btn btn-outline-dark px-4 py-2">Contat Us</button>
                     </div>
                 </div>
             </div>
