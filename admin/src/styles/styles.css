@@ -1,21 +1,31 @@
 .min-w-5 {
-    min-width: 4rem /* Assuming 1 unit in Tailwind is 4rem */
-  }
+  min-width: 4rem
+    /* Assuming 1 unit in Tailwind is 4rem */
+}
 
-  .svg-size{
-    width: 1rem;
-    height: 1rem;
-  }
+.svg-size {
+  width: 1rem;
+  height: 1rem;
+}
 
-  .bg-sidebar{
-    background-color: #F2F3FF;
-  }
+.bg-sidebar {
+  background-color: #F2F3FF;
+}
 
-  .bg-container{
-    background-color: #F8F9FD;
-  }
+.bg-container {
+  background-color: #F8F9FD;
+}
 
-  .upload-image{
-    width: 4rem;
-    height: 4rem;
-  }
+.upload-image {
+  width: 4rem;
+  height: 4rem;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.card:hover{
+  transform: translateY(-5px); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
