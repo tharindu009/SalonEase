@@ -1,0 +1,21 @@
+.min-w-5 {
+    min-width: 4rem /* Assuming 1 unit in Tailwind is 4rem */
+  }
+
+  .svg-size{
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .bg-sidebar{
+    background-color: #F2F3FF;
+  }
+
+  .bg-container{
+    background-color: #F8F9FD;
+  }
+
+  .upload-image{
+    width: 4rem;
+    height: 4rem;
+  }

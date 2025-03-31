@@ -30,8 +30,7 @@ const addService = async (req, res) => {
 
         const newService = new serviceModel(serviceData);
         await newService.save();
-
-        res.json({sucess:true,message:"Service Added"});
+        res.json({success:true,message:"Service Added"});
     }
     catch (error) {
         console.log(error);

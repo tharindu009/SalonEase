@@ -1,0 +1,26 @@
+.mt-n1 {
+    margin-block-start: -1rem;
+  }
+  
+  .mw-lg {
+    max-width: 45rem;
+  }
+  
+  .input-appearance-none {
+    appearance: textfield;
+  }
+  
+  .input-appearance-none::-webkit-outer-spin-button,
+  .input-appearance-none::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  .border-transparent {
+    border: transparent;
+  }
+  
+  .w-max-content {
+    width: max-content;
+  }
+  
