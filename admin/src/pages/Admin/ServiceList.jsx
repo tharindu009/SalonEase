@@ -14,7 +14,7 @@ const ServiceList = () => {
 
   return (
     <div className="mt-4">
-    <h4 className='mb-2'>All Doctors</h4>
+    <h4 className='mb-2'>All Services</h4>
     <div className='container'>
     <div className="row">
       {services.map((item, index) => (
