@@ -9,7 +9,7 @@ import BestPricing from '../components/BestPricing'
 const Appointments = () => {
 
     const { serviceId } = useParams();
-    const { prices } = useContext(AppContext);
+    const { services } = useContext(AppContext);
     const [serviceSlots, setServiceSlots] = useState([]);
     const [slotIndex, setSlotIndex] = useState(0);
     const [slotTime, setSlotTime] = useState('');
@@ -19,7 +19,7 @@ const Appointments = () => {
     const [serviceInfo, setServiceInfo] = useState(null);
 
     const fetchServiceInfo = async () => {
-        const serviceInfo = prices.find(ser => ser._id === serviceId);
+        const serviceInfo = services.find(ser => ser._id === serviceId);
         setServiceInfo(serviceInfo);
         //console.log(serviceInfo);
     }
@@ -96,7 +96,7 @@ const Appointments = () => {
 
         fetchServiceInfo();
 
-    }, [prices, serviceId]);
+    }, [services, serviceId]);
 
     useEffect(() => {
         getAvailableSlots()
@@ -112,7 +112,7 @@ const Appointments = () => {
             {/*-------- Service Detail -----------*/}
             <div className='row'>
                 <div className='col-md-3 col-xs-5 '>
-                    <img className='w-100 rounded-lg img-thumbnail' src={serviceInfo.img} alt="" />
+                    <img className='w-100 rounded-lg img-thumbnail' src={serviceInfo.image} alt="" />
                 </div>
 
                 <div className='col-md-9 col-xs-7 flex-grow border border-secondary rounded py-3'>
@@ -125,7 +125,7 @@ const Appointments = () => {
                         <p className='d-flex align-items-center gap-1 mt-3 app-desc'>Description <img src={info_icon} alt="" /></p>
                         <p className='text-muted small mt-1 app-desc'>{serviceInfo.desc}</p>
                         <hr />
-                        <p className='text-secondary font-weight-medium mt-2'>Appointment fee: <span className='text-dark'>{serviceInfo.price} </span></p>
+                        <p className='text-secondary font-weight-medium mt-2'>Appointment fee: <span className='text-dark'>$ {serviceInfo.fees} </span></p>
                     </div>
                 </div>
 

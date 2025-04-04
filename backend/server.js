@@ -4,6 +4,8 @@ import 'dotenv/config';
 import connectDB from './config/mongodb.js';
 import adminRouter from "./routes/adminRoute.js";
 import connectCloudinary from "./config/cloudinary.js";
+import serviceRouter from './routes/serviceRoute.js';
+import userRouter from './routes/userRoute.js';
 
 
 // App config
@@ -18,6 +20,8 @@ app.use(cors());
 
 //API endpoints
 app.use("/api/admin", adminRouter);
+app.use("/api/service", serviceRouter);
+app.use("/api/user", userRouter);
 
 
 //-----

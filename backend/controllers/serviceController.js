@@ -15,4 +15,17 @@ const changeAvailability = async (req, res) => {
     }
 }
 
-export { changeAvailability }
+// Function to get list of service
+const serviceList = async (req, res) => {
+    try {
+        const services = await serviceModel.find({});
+        res.json({ success: true, services });
+    } 
+    catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+        console.log(error);
+    }
+}
+
+export { changeAvailability, serviceList }
