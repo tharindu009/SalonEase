@@ -12,6 +12,8 @@ const AdminContextProvider = (props) => {
 
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
+
+    //Get All Services
     const getAllServices = async () => {
         try {
             const { data } = await axios.post(backendUrl + "/api/admin/service-list", {}, { headers: { aToken } });
@@ -28,9 +30,29 @@ const AdminContextProvider = (props) => {
         }
     }
 
+    //Change Availability
+    const changeAvailability = async (serId) => {
+        try {
+            const { data } = await axios.post(backendUrl + '/api/admin/change-availability', { serId }, { headers: { aToken } });
+            //console.log(serId);
+            //Check data available
+            if (data.success) {
+                toast.success(data.message);
+                getAllServices();
+            }
+            else {
+                toast.error(data.message);
+            }
+        }
+        catch (error) {
+            toast.error(error.message);
+        }
+    }
+
     const value = {
         aToken, setAToken,
-        backendUrl,services,getAllServices
+        backendUrl, services,
+        getAllServices, changeAvailability,
     }
 
     return (

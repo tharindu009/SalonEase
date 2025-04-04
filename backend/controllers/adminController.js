@@ -24,7 +24,7 @@ const addService = async (req, res) => {
             name,
             image: imageUrl,
             fees,
-            desc
+            desc,
         };
 
         const newService = new serviceModel(serviceData);
@@ -42,7 +42,9 @@ const addService = async (req, res) => {
 const loginAdmin = async (req, res) => {
     try {
         const { email, password } = req.body;
-        console.log(email);
+        
+        //console.log(email);
+
         if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
             const token = jwt.sign(email + password, process.env.JWT_SECRET);
             res.json({ success: true, token });
