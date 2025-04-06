@@ -12,7 +12,7 @@ const AppContextProvider = (props) => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const [services, setServices] = useState([]);
 
-    const [token,setToken] = useState('');
+    const [token,setToken] = useState(localStorage.getItem('token')? localStorage.getItem('token') : false);
 
 
 
@@ -36,7 +36,7 @@ const AppContextProvider = (props) => {
 
 
     const value = {
-        services,
+        services,getAllServices,
         token,setToken,
         backendUrl,
     }

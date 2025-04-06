@@ -6,6 +6,8 @@ const serviceSchema = new mongoose.Schema({
     fees: { type: String, required: true },
     desc: { type: String, required: true },
     available: { type: Boolean, default: true },
+    slots_booked: { type: Object, default: {} },
+    date: { type: Number, required: true },
 }, { minimize: false })
 
 const serviceModel = mongoose.models.service || mongoose.model("service", serviceSchema);

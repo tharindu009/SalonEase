@@ -33,7 +33,7 @@ import { ToastContainer, toast } from 'react-toastify';
         <Route path='/contact' element={<Contact />}/>
         <Route path='/profile' element={<Profile />}/>
         <Route path='/appointments' element={<Appointments />}/>
-        <Route path='/my-appointment' element={<MyAppointment />}/>
+        <Route path='/my-appointments' element={<MyAppointment />}/>
         <Route path='/appointments/:serviceId' element={<Appointments />}/>
       </Routes>
       <Footer/>
