@@ -49,4 +49,31 @@ const registerUser = async (req, res) => {
 }
 
 
-export { registerUser };
+//API to login a user
+const loginUser = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await userModel.findOne({ email });
+
+        //checking if the request body is empty
+        if(!user) {
+            return res.status(400).json({success:"false", message: "Invalid email or password" });
+        }
+
+        const isMatch = await bycrypt.compare(password, user.password);
+        if(isMatch) {
+            const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+            res.json({success:"true", token: token, user: { id: user._id, name: user.name, email: user.email } });
+        }
+        else{
+            return res.status(400).json({success:"false", message: "Invalid email or password" });
+        }
+        
+    } 
+    catch (error) {
+        console.log(error.message);
+        res.status(500).json({success:"false", message: error.message });
+    }
+} 
+
+export { registerUser, loginUser };

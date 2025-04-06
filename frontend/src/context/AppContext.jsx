@@ -12,9 +12,9 @@ const AppContextProvider = (props) => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const [services, setServices] = useState([]);
 
-    const value = {
-        services
-    }
+    const [token,setToken] = useState('');
+
+
 
     const getAllServices = async () => {
         try {
@@ -32,6 +32,13 @@ const AppContextProvider = (props) => {
             console.log(error.message);
             toast.error(error.message);
         }
+    }
+
+
+    const value = {
+        services,
+        token,setToken,
+        backendUrl,
     }
 
     useEffect(() => {

@@ -1,19 +1,20 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import logo from '../assets/images/logo.svg'
 import profile_pic from '../assets/images/profile_pic.png'
 import dropdown_icon from '../assets/images/dropdown_icon.svg'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { AppContext } from '../context/AppContext'
 
 const Navbar = () => {
 
     const navigate = useNavigate();
 
     const [showMenu, setShowMenu] = useState(false)
-    const [token, setToken] = useState(true)
+    const {token, setToken} = useContext(AppContext);
 
     const logout = () => {
-        localStorage.removeItem('token')
         setToken(false)
+        localStorage.removeItem('token')   
         navigate('/login')
       }
 
@@ -60,7 +61,7 @@ const Navbar = () => {
                 {
                     token
                         ? <div className='d-flex align-items-center gap-2 cursor-pointer position-relative'>
-                            <img className="rounded-circle profile-pic" src={profile_pic} alt="profile picture" />
+                            <img className="rounded-circle profile-pic border border-primary" src={profile_pic} alt="profile picture" />
 
                             
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">

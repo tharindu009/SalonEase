@@ -1,6 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { AppContext } from '../context/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+
+    const { backendUrl, token, setToken } = useContext(AppContext);
+    const navigate = useNavigate();
 
     const [state, setState] = useState('Sign Up');
     const [name, setName] = useState('');
@@ -9,10 +16,38 @@ const Login = () => {
 
     const onSubmitHandler = async (event) => {
         event.preventDefault();
-    }
+
+        try {
+            if (state === 'Sign Up') {
+                const { data } = await axios.post(backendUrl + '/api/user/register', { name, password, email });
+                if (data.success) {
+                    localStorage.setItem('token', data.token);
+                    setToken(data.token);
+                } else {
+                    toast.error(data.message);
+                }
+            } else {
+                const { data } = await axios.post(backendUrl + '/api/user/login', { password, email });
+                if (data.success) {
+                    localStorage.setItem('token', data.token);
+                    setToken(data.token);
+                } else {
+                    toast.error(data.message);
+                }
+            }
+        } catch (error) {
+            toast.error(error.message);
+        }
+    };
+
+    useEffect(() => {
+        if(token) {
+            navigate('/');
+        }
+    },[token])
 
     return (
-        <form className='min-vh-80 d-flex align-items-center'>
+        <form onSubmit={onSubmitHandler} className='min-vh-80 d-flex align-items-center'>
             <div className='d-flex flex-column gap-3 m-auto align-items-start p-4 min-w-340px min-w-sm-96 border rounded-xl text-secondary text-small shadow-lg'>
                 <h4 className='font-weight-semibold'>{state === 'Sign Up'?"Create Account" : "Login"}</h4>
                 <p>Please {state === 'Sign Up' ? 'sign up' : 'log in'} to book appointment</p>
@@ -32,7 +67,7 @@ const Login = () => {
                     <p>Password</p>
                     <input className='border border-dark-subtle rounded w-100 p-2 mt-1' type="password" onChange={(e) => setPassword(e.target.value)} value={password } required/>
                 </div>
-                <button className='btn btn-primary w-100 py-2 my-2 rounded text-base'>{state === 'Sign Up'?"Create Account" : "Login"}</button>
+                <button type='submit' className='btn btn-primary w-100 py-2 my-2 rounded text-base'>{state === 'Sign Up'?"Create Account" : "Login"}</button>
                 {
                     state === "Sign Up"
                     ? <p>Already have an account? <span onClick={() => setState('Login')} className='text-primary text-decoration-underline pointer'>Login here</span></p>
