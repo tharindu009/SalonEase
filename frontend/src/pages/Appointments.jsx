@@ -138,7 +138,7 @@ const Appointments = () => {
                 toast.success(data.message);
                 console.log("I am here");
                 getAllServices();
-                navigate('my-appointments');
+                navigate('/my-appointments');
             } 
             else {       
                 toast.error(data.message);

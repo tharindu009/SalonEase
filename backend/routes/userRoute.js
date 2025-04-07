@@ -1,5 +1,5 @@
 import express from 'express';
-import { registerUser,loginUser,bookAppointment, listAppointment } from '../controllers/userController.js';
+import { registerUser,loginUser,bookAppointment, listAppointment, cancelAppointment } from '../controllers/userController.js';
 import authUser from '../middleware/authUser.js';
 
 
@@ -16,6 +16,9 @@ userRouter.post('/book-appointment', authUser, bookAppointment);
 
 //Route to get all appointments of a user
 userRouter.get('/appointments', authUser, listAppointment);
+
+//Route to cancel an appointment
+userRouter.post('/cancel-appointment', authUser, cancelAppointment);
 
 
 

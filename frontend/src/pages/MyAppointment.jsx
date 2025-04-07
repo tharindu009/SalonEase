@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const MyAppointments = () => {
 
-    const { backendUrl, token } = useContext(AppContext);
+    const { backendUrl, token, getAllServices } = useContext(AppContext);
 
     const [appointments, setAppointments] = useState([]);
 
@@ -34,6 +34,28 @@ const MyAppointments = () => {
         }
     }
 
+    // Function to cancel an appointment
+    const cancelAppointment = async (appointmentId) => {
+        try {
+            //console.log(appointmentId);
+            const {data} = await axios.post(backendUrl + "/api/user/cancel-appointment",{appointmentId},{headers:{token}});
+            
+            if(data.success){
+                toast.success(data.message);
+                getUserAppointments();
+                getAllServices();
+            }
+            else{
+                toast.error(data.message);
+            }
+            
+        } 
+        catch (error) {
+            console.log(error);
+            toast.error(error.message);
+        }
+    }
+
     useEffect(() => {
         if(token){
             getUserAppointments();
@@ -50,7 +72,7 @@ const MyAppointments = () => {
                     <div className="row g-0">
                         <div className="col-md-2">
                             <img
-                                src={item.serviceData.image} // Replace with actual doctor image
+                                src={item.serviceData.image}
                                 className="img-fluid rounded-start"
                                 alt=""
                             />
@@ -62,9 +84,12 @@ const MyAppointments = () => {
                                     Date & Time: <span className='fw-lighter'> {slotDateFormat(item.slotDate)} | {item.slotTime} </span>
                                 </p>
                                 <div className="d-flex justify-content-end">
-                                    <button className="btn btn-outline-danger">
+                                {item.cancelled && (
+                    <p className='text-danger'>Appointment Cancelled</p>
+                  )}
+                                    {!item.cancelled && <button onClick={()=>cancelAppointment(item._id)} className="btn btn-outline-danger">
                                         Cancel appointment
-                                    </button>
+                                    </button>}
                                 </div>
                             </div>
                         </div>
