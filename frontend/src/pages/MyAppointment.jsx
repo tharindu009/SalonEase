@@ -1,15 +1,41 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { AppContext } from '../context/AppContext';
+//import { AppContext } from '../context/AppContext';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
 const MyAppointments = () => {
 
-    const { backendUrl, token, getAllServices } = useContext(AppContext);
+    //const { backendUrl, token, getAllServices } = useContext(AppContext);
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    const [services, setServices] = useState([]);
+
+    const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : false);
+
+    const getAllServices = async () => {
+        try {
+
+            const { data } = await axios.get(backendUrl + "/api/service/list");
+            if (data.success) {
+                setServices(data.services);
+            }
+            else {
+                console.log(data.message);
+                toast.error(data.message);
+            }
+
+        } catch (error) {
+            console.log(error.message);
+            toast.error(error.message);
+        }
+    }
+
+    useEffect(() => {
+        getAllServices();
+    }, [])
 
     const [appointments, setAppointments] = useState([]);
 
-    const months = ["","Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const months = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     // Function to format the date eg. ( 20_01_2000 => 20 Jan 2000 )
     const slotDateFormat = (slotDate) => {
@@ -20,14 +46,14 @@ const MyAppointments = () => {
     const getUserAppointments = async () => {
         try {
 
-            const {data} = await axios.get(backendUrl + "/api/user/appointments",{headers:{token}});
-            
-            if(data.success){
+            const { data } = await axios.get(backendUrl + "/api/user/appointments", { headers: { token } });
+
+            if (data.success) {
                 setAppointments(data.appointments.reverse());
                 console.log(data.appointments);
             }
-            
-        } 
+
+        }
         catch (error) {
             console.log(error);
             toast.error(error.message);
@@ -38,18 +64,18 @@ const MyAppointments = () => {
     const cancelAppointment = async (appointmentId) => {
         try {
             //console.log(appointmentId);
-            const {data} = await axios.post(backendUrl + "/api/user/cancel-appointment",{appointmentId},{headers:{token}});
-            
-            if(data.success){
+            const { data } = await axios.post(backendUrl + "/api/user/cancel-appointment", { appointmentId }, { headers: { token } });
+
+            if (data.success) {
                 toast.success(data.message);
                 getUserAppointments();
                 getAllServices();
             }
-            else{
+            else {
                 toast.error(data.message);
             }
-            
-        } 
+
+        }
         catch (error) {
             console.log(error);
             toast.error(error.message);
@@ -57,17 +83,17 @@ const MyAppointments = () => {
     }
 
     useEffect(() => {
-        if(token){
+        if (token) {
             getUserAppointments();
         }
-    },[]);
+    }, []);
 
-  return (
+    return (
         <div className="container mt-4">
             <div className="d-flex justify-content-between align-items-center mb-4">
                 <h2>My Appointments</h2>
             </div>
-            {appointments.map((item,index) => (
+            {appointments.map((item, index) => (
                 <div key={index} className="card mb-3">
                     <div className="row g-0">
                         <div className="col-md-2">
@@ -84,10 +110,10 @@ const MyAppointments = () => {
                                     Date & Time: <span className='fw-lighter'> {slotDateFormat(item.slotDate)} | {item.slotTime} </span>
                                 </p>
                                 <div className="d-flex justify-content-end">
-                                {item.cancelled && (
-                    <p className='text-danger'>Appointment Cancelled</p>
-                  )}
-                                    {!item.cancelled && <button onClick={()=>cancelAppointment(item._id)} className="btn btn-outline-danger">
+                                    {item.cancelled && (
+                                        <p className='text-danger'>Appointment Cancelled</p>
+                                    )}
+                                    {!item.cancelled && <button onClick={() => cancelAppointment(item._id)} className="btn btn-outline-danger">
                                         Cancel appointment
                                     </button>}
                                 </div>

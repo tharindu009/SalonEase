@@ -17,7 +17,7 @@ import Profile from "./pages/Profile";
 import Appointments from "./pages/Appointments";
 import MyAppointment from "./pages/MyAppointment";
 import Footer from "./components/Footer";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 
  const App = () => {

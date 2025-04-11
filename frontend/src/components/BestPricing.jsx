@@ -1,13 +1,37 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { AppContext } from '../context/AppContext';
+import axios from 'axios';
 
 
 
 const BestPricing = () => {
 
-const navigate = useNavigate()
-const {services} = useContext(AppContext)
+    const navigate = useNavigate()
+    //const {services} = useContext(AppContext)
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    const [services, setServices] = useState([]);
+
+    const getAllServices = async () => {
+        try {
+
+            const { data } = await axios.get(backendUrl + "/api/service/list");
+            if (data.success) {
+                setServices(data.services);
+            }
+            else {
+                console.log(data.message);
+                //toast.error(data.message);
+            }
+
+        } catch (error) {
+            console.log(error.message);
+            //toast.error(error.message);
+        }
+    }
+
+    useEffect(() => {
+        getAllServices();
+    }, [])
 
     return (
         <div className='d-flex flex-column align-items-center my-4 text-dark mx-md-5'>

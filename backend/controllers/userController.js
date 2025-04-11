@@ -65,7 +65,7 @@ const loginUser = async (req, res) => {
         const isMatch = await bycrypt.compare(password, user.password);
         if (isMatch) {
             const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-            res.json({ success: "true", token: token, user: { id: user._id, name: user.name, email: user.email } });
+            res.json({ success: true, token: token, user: { id: user._id, name: user.name, email: user.email } });
         }
         else {
             return res.status(400).json({ success: false, message: "Invalid email or password" });
@@ -158,19 +158,19 @@ const listAppointment = async (req, res) => {
 //API to cancel appointment
 const cancelAppointment = async (req, res) => {
     try {
-        const {userId, appointmentId} = req.body;
+        const { userId, appointmentId } = req.body;
 
         const appointmentData = await appointmentModel.findById(appointmentId);
 
         //verifying if the appointment belongs to the user
-        if(appointmentData.userId.toString() !== userId){
-            return res.status(400).json({success: false, message: "Unauthorized action"});
+        if (appointmentData.userId.toString() !== userId) {
+            return res.status(400).json({ success: false, message: "Unauthorized action" });
         }
 
         await appointmentModel.findByIdAndUpdate(appointmentId, { cancelled: true })
 
         //releasing the booked slot
-        const {serviceId, slotDate, slotTime} = appointmentData;
+        const { serviceId, slotDate, slotTime } = appointmentData;
 
         const serviceData = await serviceModel.findById(serviceId);
 
@@ -180,12 +180,12 @@ const cancelAppointment = async (req, res) => {
 
         await serviceModel.findByIdAndUpdate(serviceId, { slots_booked });
         res.status(200).json({ success: true, message: "Appointment cancelled successfully" });
-    } 
+    }
     catch (error) {
         console.log(error.message);
         res.status(500).json({ success: false, message: error.message });
-        
+
     }
 }
 
-export { registerUser, loginUser, bookAppointment,listAppointment, cancelAppointment };
+export { registerUser, loginUser, bookAppointment, listAppointment, cancelAppointment };

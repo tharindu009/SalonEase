@@ -136,7 +136,7 @@ const Appointments = () => {
             if (data.success) {
                 
                 toast.success(data.message);
-                console.log("I am here");
+                //console.log("I am here");
                 getAllServices();
                 navigate('/my-appointments');
             } 
