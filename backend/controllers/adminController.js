@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { v2 as cloudinary } from "cloudinary";
 import serviceModel from '../models/serviceModel.js';
+import appointmentModel from '../models/appointmentModel.js';
 
 
 //Api for adding services
@@ -42,7 +43,7 @@ const addService = async (req, res) => {
 const loginAdmin = async (req, res) => {
     try {
         const { email, password } = req.body;
-        
+
         //console.log(email);
 
         if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
@@ -74,4 +75,53 @@ const allServices = async (req, res) => {
 }
 
 
-export { addService, loginAdmin, allServices };
+// API to get all appointments list for admin panel
+const appointmentsAdmin = async (req, res) => {
+    try {
+        const appointments = await appointmentModel.find({});
+        res.json({ success: true, appointments });
+    }
+    catch (error) {
+        console.log(error.message);
+        res.json({ success: false, message: error.message });
+    }
+}
+
+//API to cancel appointment
+const cancelAppointment = async (req, res) => {
+    try {
+        console.log("cancel appointment api");
+        const { appointmentId } = req.body;
+
+        if (!appointmentId) {
+            return res.status(400).json({ success: false, message: "Appointment ID is required" });
+        }
+
+        const appointmentData = await appointmentModel.findById(appointmentId);
+
+        if (!appointmentData) {
+            return res.status(404).json({ success: false, message: "Appointment not found" });
+        }
+
+        // Cancel the appointment
+        await appointmentModel.findByIdAndUpdate(appointmentId, { cancelled: true });
+
+        // Release the booked slot
+        const { serviceId, slotDate, slotTime } = appointmentData;
+        const serviceData = await serviceModel.findById(serviceId);
+
+        let slots_booked = serviceData.slots_booked;
+        slots_booked[slotDate] = slots_booked[slotDate].filter((slot) => slot !== slotTime);
+
+        await serviceModel.findByIdAndUpdate(serviceId, { slots_booked });
+        res.status(200).json({ success: true, message: "Appointment cancelled successfully" });
+    }
+    catch (error) {
+        console.log(error.message);
+        res.status(500).json({ success: false, message: error.message });
+
+    }
+}
+
+
+export { addService, loginAdmin, allServices, appointmentsAdmin, cancelAppointment };

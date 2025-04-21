@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
-    //const { backendUrl, token, setToken } = useContext(AppContext);
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : false);
 

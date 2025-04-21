@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { AppContext } from '../context/AppContext'
 import verified_icon from '../assets/images/verified_icon.svg'
 import info_icon from '../assets/images/info_icon.svg'
 import ServiceMenu from '../components/ServiceMenu'
@@ -11,16 +10,45 @@ import axios from 'axios'
 const Appointments = () => {
 
     const { serviceId } = useParams();
-    const { services, backendUrl, token, getAllServices } = useContext(AppContext);
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const [serviceSlots, setServiceSlots] = useState([]);
     const [slotIndex, setSlotIndex] = useState(0);
     const [slotTime, setSlotTime] = useState('');
+
+    const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : false);
 
     const navigate = useNavigate();
 
     const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
     const [serviceInfo, setServiceInfo] = useState(null);
+
+
+
+    const [services, setServices] = useState([]);
+
+    const getAllServices = async () => {
+        try {
+
+            const { data } = await axios.get(backendUrl + "/api/service/list");
+            if (data.success) {
+                setServices(data.services);
+            }
+            else {
+                console.log(data.message);
+                //toast.error(data.message);
+            }
+
+        } catch (error) {
+            console.log(error.message);
+            //toast.error(error.message);
+        }
+    }
+
+    useEffect(() => {
+        getAllServices();
+    }, [])
+
 
     const fetchServiceInfo = async () => {
         const serviceInfo = services.find(ser => ser._id === serviceId);
@@ -85,7 +113,7 @@ const Appointments = () => {
                 const slotDate = day + '_' + month + '_' + year;
                 const slotTime = formattedTime;
 
-                const isSlotAvilable = serviceInfo.slots_booked[slotDate] && serviceInfo.slots_booked[slotDate].includes(slotTime)?false:true;
+                const isSlotAvilable = serviceInfo.slots_booked[slotDate] && serviceInfo.slots_booked[slotDate].includes(slotTime) ? false : true;
 
                 //add slots to array
                 if (isSlotAvilable) {
@@ -96,7 +124,7 @@ const Appointments = () => {
                     });
                 }
 
-                
+
                 // timeSlots.push({
                 //     datetime: new Date(currentDate),
                 //     time: formattedTime
@@ -115,32 +143,32 @@ const Appointments = () => {
     // call book appointment api
     const bookAppointment = async () => {
 
-        if(!token) {
+        if (!token) {
             toast.warn("Please login to book an appointment");
             return navigate('/login');
         }
 
         try {
-            
+
             const date = serviceSlots[slotIndex][0].datetime;
             let day = date.getDate();
             let month = date.getMonth() + 1;
             let year = date.getFullYear();
 
-            const slotDate = day + '_' + month + '_' + year; 
+            const slotDate = day + '_' + month + '_' + year;
 
-            const { data } = await axios.post(backendUrl + '/api/user/book-appointment',{serviceId, slotDate, slotTime},{headers:{token}});
+            const { data } = await axios.post(backendUrl + '/api/user/book-appointment', { serviceId, slotDate, slotTime }, { headers: { token } });
 
             console.log(data.success);
-            
+
             if (data.success) {
-                
+
                 toast.success(data.message);
                 //console.log("I am here");
                 getAllServices();
                 navigate('/my-appointments');
-            } 
-            else {       
+            }
+            else {
                 toast.error(data.message);
             }
 

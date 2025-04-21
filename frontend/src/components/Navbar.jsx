@@ -8,8 +8,6 @@ const Navbar = () => {
 
     const navigate = useNavigate();
 
-    //const {token, setToken} = useContext(AppContext);
-
     const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : false);
 
     const logout = () => {

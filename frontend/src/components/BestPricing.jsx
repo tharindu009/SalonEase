@@ -7,7 +7,6 @@ import axios from 'axios';
 const BestPricing = () => {
 
     const navigate = useNavigate()
-    //const {services} = useContext(AppContext)
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const [services, setServices] = useState([]);
 
