@@ -1,7 +1,6 @@
 
 import React, { useEffect, useContext, useState } from 'react';
 import { AdminContext } from '../../context/AdminContext';
-import { AppContext } from '../../context/AppContext';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { assets } from '../../assets/assets';
@@ -53,7 +52,7 @@ const AllAppointmnets = () => {
     if (aToken) {
       //console.log("atoken");
       getAllAppointments();
-      cancelAppointment();
+      //cancelAppointment();
     }
   }, [aToken])
 

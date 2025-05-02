@@ -79,7 +79,47 @@ const loginUser = async (req, res) => {
 }
 
 //API to get user profile
+const getUserProfile = async (req, res) => {
+    try {
+        const { userId } = req.body;
+        const userData = await userModel.findById(userId).select("-password");
+        if (!userData) {
+            return res.status(400).json({ success: false, message: "User not found" });
+        }
+        res.json({ success: true, userData });
+    }
+    catch (error) {
+        console.log(error.message);
+        res.status(500).json({ success: false, message: error.message });
+    }
+}
 
+//API to update user profile
+const updateUserProfile = async (req, res) => {
+    try {
+        const { userId, name, email } = req.body;
+
+        //checking if the request body is empty
+        if (!name || !email) {
+            return res.status(400).json({ success: false, message: "Please fill all the fields" });
+        }
+
+        //checking if the email is valid
+        if (!validator.isEmail(email)) {
+            return res.status(400).json({ success: false, message: "Please enter a valid email" });
+        }
+
+        const userData = await userModel.findByIdAndUpdate(userId, { name, email }, { new: true }).select("-password");
+
+        res.json({ success: true, message: "Profile updated successfully", userData });
+
+    }
+    catch (error) {
+        console.log(error.message);
+        res.status(500).json({ success: false, message: error.message });
+    }
+}
+//API to update user password   
 
 //API for booking appointment
 const bookAppointment = async (req, res) => {
@@ -188,4 +228,4 @@ const cancelAppointment = async (req, res) => {
     }
 }
 
-export { registerUser, loginUser, bookAppointment, listAppointment, cancelAppointment };
+export { registerUser, loginUser, bookAppointment, listAppointment, cancelAppointment, getUserProfile, updateUserProfile };

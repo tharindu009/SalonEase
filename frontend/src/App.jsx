@@ -20,25 +20,25 @@ import Footer from "./components/Footer";
 import { ToastContainer } from 'react-toastify';
 
 
- const App = () => {
+const App = () => {
   return (
     <div className='mx-4 sm:mx-[10%]'>
-      <ToastContainer/>
+      <ToastContainer />
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/service' element={<Service />}/>
-        <Route path='/login' element={<Login />}/>
-        <Route path='/about' element={<About />}/>
-        <Route path='/contact' element={<Contact />}/>
-        <Route path='/profile' element={<Profile />}/>
-        <Route path='/appointments' element={<Appointments />}/>
-        <Route path='/my-appointments' element={<MyAppointment />}/>
-        <Route path='/appointments/:serviceId' element={<Appointments />}/>
+        <Route path='/' element={<Home />} />
+        <Route path='/service' element={<Service />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/my-profile' element={<Profile />} />
+        <Route path='/appointments' element={<Appointments />} />
+        <Route path='/my-appointments' element={<MyAppointment />} />
+        <Route path='/appointments/:serviceId' element={<Appointments />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   )
- }
+}
 
- export default App
+export default App

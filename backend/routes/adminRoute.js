@@ -1,5 +1,5 @@
 import express from 'express'
-import { addService, allServices, appointmentsAdmin, cancelAppointment } from '../controllers/adminController.js';
+import { addService, allServices, appointmentsAdmin, cancelAppointment, adminDashboard } from '../controllers/adminController.js';
 import upload from '../middleware/multer.js';
 import { loginAdmin } from '../controllers/adminController.js'
 import authAdmin from '../middleware/authAdmin.js';
@@ -15,5 +15,6 @@ adminRouter.get('/appointments', authAdmin, appointmentsAdmin);
 
 //Route to cancel an appointment
 adminRouter.post('/cancel-appointment', authAdmin, cancelAppointment);
+adminRouter.get('/dashboard', authAdmin, adminDashboard);
 
 export default adminRouter;
