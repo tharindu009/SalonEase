@@ -31,9 +31,15 @@ app.use(cors({
       callback(new Error('Not allowed by CORS'));
     }
   },
-  //credentials: true
+  credentials: true,
   optionsSuccessStatus: 200
 }));
+
+// Debugging middleware
+app.use((req, res, next) => {
+  console.log('Request Origin:', req.headers.origin);
+  next();
+});
 
 
 //API endpoints
