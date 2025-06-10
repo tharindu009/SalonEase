@@ -16,7 +16,13 @@ connectCloudinary();
 
 // middlewares
 app.use(express.json());
-const allowedOrigins = ['https://whitesmoke-echidna-955500.hostingersite.com/', 'http://localhost:5173', 'http://localhost:3000', 'http://localhost:4000'];
+const allowedOrigins = [
+  'https://salon-ease.vercel.app',
+  'https://whitesmoke-echidna-955500.hostingersite.com/',
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'http://localhost:4000'
+];
 app.use(cors({
   origin: function (origin, callback) {
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
