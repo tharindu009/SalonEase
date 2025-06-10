@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # enviroment Variables Secrets
-backend/.env
+# backend/.env
