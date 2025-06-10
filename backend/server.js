@@ -19,7 +19,7 @@ app.use(express.json());
 const allowedOrigins = [
   'https://salon-ease.vercel.app',
   'https://whitesmoke-echidna-955500.hostingersite.com/',
-  'https://maroon-porpoise-945189.hostingersite.com/',
+  'https://salon-ease-frontend.vercel.app/',
   'http://localhost:5173',
   'http://localhost:5174',
   'http://localhost:3000',
