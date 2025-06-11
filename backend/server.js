@@ -18,6 +18,8 @@ connectCloudinary();
 app.use(express.json());
 const allowedOrigins = [
   'https://whitesmoke-echidna-955500.hostingersite.com/',
+  'https://salonease-frontend.onrender.com',
+  'https://salonease-backend.onrender.com',
   'http://localhost:5173',
   'http://localhost:5174',
   'http://localhost:3000',
