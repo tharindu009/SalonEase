@@ -1,5 +1,5 @@
 import react, { useContext } from 'react'
-import Login from './pages/login'
+import Login from './pages/Login'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./styles/globals/reset.css";
